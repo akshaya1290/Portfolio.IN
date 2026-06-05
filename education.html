@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Journey - Mission Control Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+            top: 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 52%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border: 3px solid var(--primary-dark);
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            background: rgba(30, 41, 82, 0.8);
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-title {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            color: var(--accent-purple);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-marker {
+                left: 0;
+                transform: translateX(-15px);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 425px) {
+            .timeline {
+                padding: 10px 0;
+            }
+
+            .timeline-item {
+                margin-bottom: 40px;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-marker {
+                left: 0;
+                transform: translateX(-15px);
+                width: 25px;
+                height: 25px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 40px;
+                margin-right: 0;
+                text-align: left;
+                padding: 1rem;
+            }
+
+            .timeline-content h4 {
+                font-size: 1rem;
+            }
+
+            .timeline-date {
+                font-size: 0.85rem;
+            }
+
+            .timeline-description {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (min-width: 426px) and (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-marker {
+                left: 0;
+                transform: translateX(-15px);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            section {
+                padding-top: 90px !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            section {
+                padding-bottom: 100px !important;
+            }
+        }
+
+        @media (max-width: 425px) {
+            section {
+                padding-top: 80px !important;
+                padding-bottom: 60px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">LOADING ACADEMIC DATA...</p>
+    </div>
+
+    <!-- Particles Container -->
+    <div class="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">◆ MISSION CONTROL ◆</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">LAUNCH</a></li>
+                <li><a href="about.html">PROFILE</a></li>
+                <li><a href="skills.html">MATRIX</a></li>
+                <li><a href="projects.html">MISSIONS</a></li>
+                <li><a href="education.html" class="active">ACADEMY</a></li>
+                <li><a href="certifications.html">ACHIEVEMENTS</a></li>
+                <li><a href="contact.html">COMMS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Academic Journey Section -->
+    <section style="padding-top: 100px; padding-bottom: 100px;">
+        <div class="container">
+            <h1 class="section-title slide-in-left">ACADEMIC JOURNEY</h1>
+
+            <!-- Timeline -->
+            <div class="timeline" style="margin-top: 3rem;">
+                <!-- University Degree -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">📅 2023 - 2027</div>
+                        <div class="timeline-title">Bachelor of Engineering</div>
+                        <div class="timeline-subtitle">Computer Science Engineering</div>
+                        <div class="timeline-description">
+                            Pursuing degree at Adhiyamaan College of Engineering, Hosur with focus on core computer science fundamentals, software development, and web technologies. GPA: 8.50/10
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">Data Structures</span>
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">DBMS</span>
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">Web Dev</span>
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">Full Stack</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Higher Secondary Education -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">📅 2023</div>
+                        <div class="timeline-title">Higher Secondary Education</div>
+                        <div class="timeline-subtitle">Govt. Hr. Sec. School, Valathur</div>
+                        <div class="timeline-description">
+                            Completed higher secondary education with strong focus on academics and extracurricular activities. Secured 76% in board examinations.
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="
+                                background: rgba(236, 72, 153, 0.2);
+                                color: var(--accent-pink);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(236, 72, 153, 0.5);
+                            ">Mathematics</span>
+                            <span style="
+                                background: rgba(236, 72, 153, 0.2);
+                                color: var(--accent-pink);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(236, 72, 153, 0.5);
+                            ">Science</span>
+                            <span style="
+                                background: rgba(236, 72, 153, 0.2);
+                                color: var(--accent-pink);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(236, 72, 153, 0.5);
+                            ">English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Certifications -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">📅 2024 - Present</div>
+                        <div class="timeline-title">Professional Development</div>
+                        <div class="timeline-subtitle">Cloud Computing & AI Specialization</div>
+                        <div class="timeline-description">
+                            Actively pursuing industry-recognized certifications and gaining hands-on experience in cloud computing, AI applications, and modern web development technologies.
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">Cloud Computing</span>
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">AI & ML</span>
+                            <span style="
+                                background: rgba(6, 182, 212, 0.2);
+                                color: var(--accent-cyan);
+                                padding: 0.2rem 0.6rem;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba(6, 182, 212, 0.5);
+                            ">Full Stack Dev</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Courses -->
+            <div style="margin-top: 4rem; margin-bottom: 4rem;">
+                <h2 class="section-title">KEY COURSES & SUBJECTS</h2>
+
+                <div class="grid grid-3" style="margin-top: 2rem;">
+                    <div class="glass-card scroll-reveal" style="
+                        text-align: center;
+                        border-left: 3px solid var(--accent-cyan);
+                    ">
+                        <h4 style="margin-bottom: 0.5rem;">Core Fundamentals</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            Data Structures, Algorithms, DBMS, Computer Networks, Operating Systems
+                        </p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="
+                        text-align: center;
+                        border-left: 3px solid var(--accent-purple);
+                    ">
+                        <h4 style="margin-bottom: 0.5rem;">Web Technologies</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            Web Development, Frontend Frameworks, Backend Development, APIs
+                        </p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="
+                        text-align: center;
+                        border-left: 3px solid var(--accent-pink);
+                    ">
+                        <h4 style="margin-bottom: 0.5rem;">Software Engineering</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            Software Design, UML, SDLC, Testing, Project Management
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="glass-card scroll-reveal" style="
+                text-align: center;
+                margin-bottom: 2rem;
+            ">
+                <h2 style="margin-bottom: 2rem; color: var(--accent-cyan);">ACADEMIC ACHIEVEMENTS</h2>
+                
+                <div class="grid grid-3" style="gap: 1.5rem;">
+                    <div>
+                        <div style="
+                            font-size: 2rem;
+                            color: var(--accent-cyan);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">🏆</div>
+                        <h4>Dean's List</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Consistently on Dean's List for maintaining exceptional grades</p>
+                    </div>
+
+                    <div>
+                        <div style="
+                            font-size: 2rem;
+                            color: var(--accent-purple);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">🎓</div>
+                        <h4>Scholarship</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Merit-based scholarship for academic excellence</p>
+                    </div>
+
+                    <div>
+                        <div style="
+                            font-size: 2rem;
+                            color: var(--accent-pink);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">🥇</div>
+                        <h4>Competition Winner</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Won multiple coding competitions and hackathons</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                © 2026 Mission Control Portfolio. Designed for the Future.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                📧 Email: <a href="mailto:akshaya1508shan@gmail.com" style="color: var(--accent-cyan); text-decoration: none;">akshaya1508shan@gmail.com</a>
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/akshaya1290" target="_blank" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/akshaya-s-4925342a3" target="_blank" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" title="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2s9 5 20 0a9.5 9.5 0 0 0-9-5.5"></path>
+                    </svg>
+                </a>
+                <a href="mailto:akshaya1508shan@gmail.com" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-10 5L2 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

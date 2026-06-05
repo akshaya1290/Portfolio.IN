@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Profile Scanner - AKSHAYA S</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* AI Scanner Specific Styles */
+        .ai-scanner-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scanner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Animated Scanning Ring */
+        .scanner-ring {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scanner-ring::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--accent-cyan);
+            border-right: 2px solid var(--accent-purple);
+            border-radius: 50%;
+            animation: scannerSpin 2s linear infinite;
+            box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.2), 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .scanner-ring::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--accent-cyan), transparent);
+            transform: translateX(-50%);
+            animation: scannerBeam 2s linear infinite;
+        }
+
+        @keyframes scannerSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scannerBeam {
+            from {
+                top: 10px;
+                opacity: 1;
+            }
+            to {
+                top: 90%;
+                opacity: 0;
+            }
+        }
+
+        .profile-image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(6, 182, 212, 0.3));
+            border: 2px solid rgba(6, 182, 212, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--accent-cyan);
+            box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .profile-image-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(6, 182, 212, 0.1));
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .scanner-info {
+            margin-top: 2rem;
+        }
+
+        .status-text {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .identity-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.6s ease-out 0.2s backwards;
+        }
+
+        .identity-role {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            animation: fadeInDown 0.6s ease-out 0.3s backwards;
+        }
+
+        .identity-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.6s ease-out 0.4s backwards;
+        }
+
+        .loading-percentage {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(6, 182, 212, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            width: 0%;
+            animation: progressFill 3s ease-out forwards;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+        }
+
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        .scan-complete-message {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 3s forwards;
+        }
+
+        .portfolio-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(124, 58, 237, 0.2));
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 3.2s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .portfolio-button:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(124, 58, 237, 0.3));
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-button:active {
+            transform: translateY(0);
+        }
+
+        /* Animation on button hover */
+        .portfolio-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1440px) {
+            .scanner-ring {
+                width: 200px;
+                height: 200px;
+            }
+
+            .profile-image-container {
+                width: 160px;
+                height: 160px;
+                font-size: 4rem;
+            }
+
+            .identity-name {
+                font-size: 2.8rem;
+            }
+
+            .identity-role {
+                font-size: 1.4rem;
+            }
+
+            .scanner-info {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .scanner-ring {
+                width: 180px;
+                height: 180px;
+            }
+
+            .profile-image-container {
+                width: 140px;
+                height: 140px;
+                font-size: 3.5rem;
+            }
+
+            .identity-name {
+                font-size: 2.5rem;
+            }
+
+            .identity-role {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ai-scanner-container {
+                min-height: auto;
+                padding: 120px 1.5rem 4rem;
+            }
+
+            .scanner-content {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .scanner-ring {
+                width: 160px;
+                height: 160px;
+                margin-bottom: 1.5rem;
+            }
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+
+            .identity-name {
+                font-size: 1.8rem;
+            }
+
+            .identity-role {
+                font-size: 1rem;
+            }
+
+            .scanner-info {
+                max-width: 100%;
+            }
+
+            .portfolio-button {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        @media (max-width: 425px) {
+            .ai-scanner-container {
+                min-height: auto;
+                padding: 80px 1rem 3rem;
+                justify-content: flex-start;
+            }
+
+            .scanner-content {
+                width: 100%;
+                text-align: center;
+            }
+
+            .scanner-ring {
+                width: 130px;
+                height: 130px;
+                margin: 0 auto 1.2rem;
+            }
+
+            .profile-image-container {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .identity-name {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .identity-role {
+                font-size: 0.95rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .identity-tagline {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .loading-percentage {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .progress-bar {
+                margin-bottom: 1rem;
+            }
+
+            .scan-complete-message {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+
+            .portfolio-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                width: 100%;
+                max-width: none;
+            }
+
+            .status-text {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">INITIALIZING AI SCANNER...</p>
+    </div>
+
+    <!-- Particles Container -->
+    <div class="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">◆ MISSION CONTROL ◆</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">LAUNCH</a></li>
+                <li><a href="about.html">PROFILE</a></li>
+                <li><a href="skills.html">MATRIX</a></li>
+                <li><a href="projects.html">MISSIONS</a></li>
+                <li><a href="education.html">ACADEMY</a></li>
+                <li><a href="certifications.html">ACHIEVEMENTS</a></li>
+                <li><a href="contact.html">COMMS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- AI Profile Scanner Section -->
+    <section class="ai-scanner-container">
+        <div class="scanner-content">
+            <!-- Animated Scanner Ring -->
+            <div class="scanner-ring">
+                <div class="profile-image-container">
+                    <img src="profile.jpg" alt="AKSHAYA S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+
+            <!-- Scanner Information -->
+            <div class="scanner-info">
+                <div class="status-text">⚡ IDENTITY DETECTED</div>
+                <h1 class="identity-name">AKSHAYA S</h1>
+                <p class="identity-role">Full Stack Developer</p>
+                <p class="identity-tagline">AI & Cloud Enthusiast</p>
+
+                <!-- Loading Percentage -->
+                <div class="loading-percentage" id="percentage">0%</div>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <!-- Completion Message -->
+                <p class="scan-complete-message">Scanning complete. Initializing portfolio access...</p>
+
+                <!-- View Portfolio Button -->
+                <a href="about.html" class="portfolio-button">
+                    ▶ VIEW PORTFOLIO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                © 2026 Mission Control Portfolio. Designed for the Future.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                📧 Email: <a href="mailto:akshaya1508shan@gmail.com" style="color: var(--accent-cyan); text-decoration: none;">akshaya1508shan@gmail.com</a>
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/akshaya1290" target="_blank" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/akshaya-s-4925342a3" target="_blank" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" title="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2s9 5 20 0a9.5 9.5 0 0 0-9-5.5"></path>
+                    </svg>
+                </a>
+                <a href="mailto:akshaya1508shan@gmail.com" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-10 5L2 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // AI Profile Scanner Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const percentageElement = document.getElementById('percentage');
+            let currentPercentage = 0;
+            const targetPercentage = 100;
+            const duration = 3000; // 3 seconds
+            const startTime = Date.now();
+
+            function updatePercentage() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                currentPercentage = Math.floor(progress * targetPercentage);
+                percentageElement.textContent = currentPercentage + '%';
+
+                if (progress < 1) {
+                    requestAnimationFrame(updatePercentage);
+                }
+            }
+
+            updatePercentage();
+        });
+    </script>
+</body>
+</html>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Profile - Mission Control Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Responsive adjustments for About page */
+        @media (max-width: 425px) {
+            section {
+                padding-top: 80px !important;
+            }
+
+            .grid {
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h4 {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+        }
+
+        @media (min-width: 426px) and (max-width: 768px) {
+            section {
+                padding-top: 90px !important;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">ACCESSING PROFILE...</p>
+    </div>
+
+    <!-- Particles Container -->
+    <div class="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">◆ MISSION CONTROL ◆</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">LAUNCH</a></li>
+                <li><a href="about.html" class="active">PROFILE</a></li>
+                <li><a href="skills.html">MATRIX</a></li>
+                <li><a href="projects.html">MISSIONS</a></li>
+                <li><a href="education.html">ACADEMY</a></li>
+                <li><a href="certifications.html">ACHIEVEMENTS</a></li>
+                <li><a href="contact.html">COMMS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mission Briefing Section -->
+    <section style="padding-top: 100px;">
+        <div class="container">
+            <h1 class="section-title slide-in-left">MISSION PROFILE</h1>
+
+            <div class="grid grid-2" style="align-items: center; gap: 3rem;">
+                <!-- Profile Info Card -->
+                <div class="glass-card scroll-reveal" style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                ">
+                    <div>
+                        <h2>Mission Operative</h2>
+                        <p style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                            AKSHAYA S | Full Stack Developer
+                        </p>
+                        <p style="color: var(--text-muted);">Motivated Computer Science Engineering student and aspiring Full Stack Developer with passion for building scalable web applications and innovative AI-powered solutions</p>
+                    </div>
+
+                    <!-- Mission Stats -->
+                    <div style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 1rem;
+                    ">
+                        <div style="
+                            background: rgba(6, 182, 212, 0.1);
+                            border: 1px solid rgba(6, 182, 212, 0.3);
+                            padding: 1rem;
+                            border-radius: 0.5rem;
+                            text-align: center;
+                        ">
+                            <div style="
+                                font-size: 2rem;
+                                color: var(--accent-cyan);
+                                font-weight: 700;
+                                margin-bottom: 0.5rem;
+                            ">2</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Projects Completed</p>
+                        </div>
+                        <div style="
+                            background: rgba(124, 58, 237, 0.1);
+                            border: 1px solid rgba(124, 58, 237, 0.3);
+                            padding: 1rem;
+                            border-radius: 0.5rem;
+                            text-align: center;
+                        ">
+                            <div style="
+                                font-size: 2rem;
+                                color: var(--accent-purple);
+                                font-weight: 700;
+                                margin-bottom: 0.5rem;
+                            ">16</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Technologies Mastered</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div style="
+                        display: flex;
+                        gap: 1rem;
+                        flex-wrap: wrap;
+                    ">
+                        <a href="contact.html" class="btn btn-primary" style="flex: 1; text-align: center;">
+                            Contact Me
+                        </a>
+                        <a href="resume.pdf" download class="btn btn-secondary" style="flex: 1; text-align: center;">
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mission Description -->
+                <div class="scroll-reveal">
+                    <div class="glass-card" style="
+                        border-left: 4px solid var(--accent-cyan);
+                        padding: 2rem;
+                    ">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--accent-cyan);">▶ MISSION BRIEFING</h3>
+                        <div style="
+                            color: var(--text-muted);
+                            line-height: 1.8;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+                        ">
+                            <p>
+                                Motivated Computer Science Engineering student and aspiring Full Stack Developer with experience in AI-powered applications, Front-End Development, and responsive web design. Skilled in building scalable web applications, interactive dashboards, chatbot systems, and data visualization solutions.
+                            </p>
+                            <p>
+                                Passionate about Artificial Intelligence, modern web technologies, and building innovative solutions to solve real-world problems. With a strong foundation in full-stack development, I specialize in creating responsive, user-centric web applications that bridge the gap between innovative ideas and functional digital solutions.
+                            </p>
+                            <p>
+                                I believe in the power of technology to create meaningful impact. Whether it's front-end design, back-end architecture, or AI-powered systems, I approach every challenge with innovation, dedication, and a commitment to best practices in software development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Objectives -->
+            <div style="margin-top: 4rem;">
+                <h2 class="section-title">CAREER OBJECTIVES</h2>
+                
+                <div class="grid grid-3" style="margin-top: 2rem;">
+                    <div class="glass-card scroll-reveal" style="
+                        border-top: 3px solid var(--accent-cyan);
+                    ">
+                        <h4 style="color: var(--accent-cyan); margin-bottom: 1rem;">▶ Short Term</h4>
+                        <p style="color: var(--text-muted);">Secure an internship at a leading tech company to gain hands-on experience in real-world projects and expand my technical skill set.</p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="
+                        border-top: 3px solid var(--accent-purple);
+                    ">
+                        <h4 style="color: var(--accent-purple); margin-bottom: 1rem;">▶ Medium Term</h4>
+                        <p style="color: var(--text-muted);">Develop expertise in modern technologies like React, UI frameworks, and cloud platforms, while contributing to impactful open-source projects.</p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="
+                        border-top: 3px solid var(--accent-pink);
+                    ">
+                        <h4 style="color: var(--accent-pink); margin-bottom: 1rem;">▶ Long Term</h4>
+                        <p style="color: var(--text-muted);">Lead innovative tech initiatives, mentor junior developers, and create solutions that positively impact society through technology.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interests & Hobbies -->
+            <div style="margin-top: 4rem; margin-bottom: 4rem;">
+                <h2 class="section-title">INTERESTS & HOBBIES</h2>
+                
+                <div class="glass-card scroll-reveal" style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 1.5rem;
+                    padding: 2rem;
+                ">
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                        text-align: center;
+                    ">
+                        <span style="font-size: 2.5rem;">🤖</span>
+                        <h4>Artificial Intelligence</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Passionate about AI applications, machine learning, and building intelligent systems to solve real-world problems.</p>
+                    </div>
+
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                        text-align: center;
+                    ">
+                        <span style="font-size: 2.5rem;">🔗</span>
+                        <h4>Full Stack Development</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Building scalable, responsive web applications with modern technologies and frameworks.</p>
+                    </div>
+
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                        text-align: center;
+                    ">
+                        <span style="font-size: 2.5rem;">☁️</span>
+                        <h4>Cloud Computing</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Exploring cloud architectures, deployment models, and cloud-based application development.</p>
+                    </div>
+
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                        text-align: center;
+                    ">
+                        <span style="font-size: 2.5rem;">🌐</span>
+                        <h4>Web Development</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Creating beautiful, functional, and user-centric web experiences with cutting-edge technologies.</p>
+                    </div>
+
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                        text-align: center;
+                    ">
+                        <span style="font-size: 2.5rem;">🎨</span>
+                        <h4>UI/UX Design</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Designing intuitive interfaces and delightful user experiences that solve problems elegantly.</p>
+                    </div>
+
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                        text-align: center;
+                    ">
+                        <span style="font-size: 2.5rem;">💡</span>
+                        <h4>Innovation & Problem Solving</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Leveraging technology to create innovative solutions that make a positive impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                © 2026 Mission Control Portfolio. Designed for the Future.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                📧 Email: <a href="mailto:akshaya1508shan@gmail.com" style="color: var(--accent-cyan); text-decoration: none;">akshaya1508shan@gmail.com</a>
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/akshaya1290" target="_blank" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/akshaya-s-4925342a3" target="_blank" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" title="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2s9 5 20 0a9.5 9.5 0 0 0-9-5.5"></path>
+                    </svg>
+                </a>
+                <a href="mailto:akshaya1508shan@gmail.com" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-10 5L2 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

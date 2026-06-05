@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Center - Mission Control Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Responsive adjustments for Contact page */
+        @media (max-width: 425px) {
+            section {
+                padding-top: 80px !important;
+                padding-bottom: 60px !important;
+            }
+
+            .grid {
+                gap: 1.5rem;
+                align-items: stretch;
+            }
+
+            .glass-card {
+                padding: 1.5rem;
+            }
+
+            .glass-card h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem !important;
+            }
+
+            .glass-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1.2rem !important;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            label {
+                font-size: 0.9rem;
+                margin-bottom: 0.4rem;
+            }
+
+            input,
+            textarea,
+            select {
+                padding: 0.9rem;
+                font-size: 16px;
+            }
+
+            textarea {
+                min-height: 100px;
+            }
+
+            .btn {
+                padding: 0.85rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            div[style*="display: flex;"][style*="gap: 1rem;"] {
+                gap: 0.8rem !important;
+            }
+
+            div[style*="width: 40px;"] {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1rem !important;
+            }
+
+            p[style*="color: var(--text-muted);"] {
+                font-size: 0.85rem;
+            }
+
+            a[style*="color: var(--accent-cyan)"] {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 426px) and (max-width: 768px) {
+            section {
+                padding-top: 90px !important;
+                padding-bottom: 80px !important;
+            }
+
+            .grid {
+                gap: 2rem;
+                align-items: flex-start;
+            }
+
+            .glass-card h2,
+            .glass-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+
+            textarea {
+                min-height: 120px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">OPENING COMMS CHANNEL...</p>
+    </div>
+
+    <!-- Particles Container -->
+    <div class="particles-container"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">◆ MISSION CONTROL ◆</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">LAUNCH</a></li>
+                <li><a href="about.html">PROFILE</a></li>
+                <li><a href="skills.html">MATRIX</a></li>
+                <li><a href="projects.html">MISSIONS</a></li>
+                <li><a href="education.html">ACADEMY</a></li>
+                <li><a href="certifications.html">ACHIEVEMENTS</a></li>
+                <li><a href="contact.html" class="active">COMMS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section style="padding-top: 100px; padding-bottom: 100px;">
+        <div class="container">
+            <h1 class="section-title slide-in-left">COMMUNICATION CENTER</h1>
+
+            <div class="grid grid-2" style="gap: 3rem; align-items: flex-start;">
+                <!-- Contact Form -->
+                <div class="glass-card scroll-reveal" style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                ">
+                    <h2 style="
+                        color: var(--accent-cyan);
+                        margin-bottom: 0;
+                    ">Send a Message</h2>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Enter your name"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="your.email@example.com"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                placeholder="Message subject"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                placeholder="Write your message here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; cursor: pointer;">
+                            ▶ SEND MESSAGE
+                        </button>
+                    </form>
+
+                    <p style="
+                        color: var(--text-muted);
+                        font-size: 0.9rem;
+                        text-align: center;
+                        border-top: 1px solid var(--glass-border);
+                        padding-top: 1rem;
+                        margin: 0;
+                    ">
+                        I typically respond within 24-48 hours
+                    </p>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="scroll-reveal" style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                ">
+                    <!-- Direct Contact -->
+                    <div class="glass-card" style="
+                        border-left: 4px solid var(--accent-cyan);
+                    ">
+                        <h3 style="
+                            color: var(--accent-cyan);
+                            margin-bottom: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                        ">
+                            ◆ DIRECT CONTACT
+                        </h3>
+
+                        <div style="
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+                        ">
+                            <div style="
+                                display: flex;
+                                gap: 1rem;
+                                align-items: flex-start;
+                            ">
+                                <div style="
+                                    width: 40px;
+                                    height: 40px;
+                                    background: rgba(6, 182, 212, 0.2);
+                                    border: 1px solid rgba(6, 182, 212, 0.5);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-shrink: 0;
+                                    font-size: 1.2rem;
+                                ">
+                                    ✉️
+                                </div>
+                                <div>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Email</p>
+                                    <a href="mailto:akshaya1508shan@gmail.com" style="
+                                        color: var(--accent-cyan);
+                                        text-decoration: none;
+                                        font-weight: 600;
+                                    ">
+                                        akshaya1508shan@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div style="
+                                display: flex;
+                                gap: 1rem;
+                                align-items: flex-start;
+                            ">
+                                <div style="
+                                    width: 40px;
+                                    height: 40px;
+                                    background: rgba(124, 58, 237, 0.2);
+                                    border: 1px solid rgba(124, 58, 237, 0.5);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-shrink: 0;
+                                    font-size: 1.2rem;
+                                ">
+                                    📱
+                                </div>
+                                <div>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Phone</p>
+                                    <a href="tel:+917548850091" style="
+                                        color: var(--accent-purple);
+                                        text-decoration: none;
+                                        font-weight: 600;
+                                    ">
+                                        +91 7548850091
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div style="
+                                display: flex;
+                                gap: 1rem;
+                                align-items: flex-start;
+                            ">
+                                <div style="
+                                    width: 40px;
+                                    height: 40px;
+                                    background: rgba(236, 72, 153, 0.2);
+                                    border: 1px solid rgba(236, 72, 153, 0.5);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-shrink: 0;
+                                    font-size: 1.2rem;
+                                ">
+                                    📍
+                                </div>
+                                <div>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Location</p>
+                                    <p style="
+                                        color: var(--accent-pink);
+                                        font-weight: 600;
+                                        margin: 0;
+                                    ">
+                                        Vellore, India – 632001
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Networks -->
+                    <div class="glass-card" style="
+                        border-left: 4px solid var(--accent-purple);
+                    ">
+                        <h3 style="
+                            color: var(--accent-purple);
+                            margin-bottom: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                        ">
+                            ◆ PROFESSIONAL NETWORKS
+                        </h3>
+
+                        <div style="
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 1rem;
+                        ">
+                            <a href="https://github.com/akshaya1290" target="_blank" style="
+                                background: rgba(6, 182, 212, 0.1);
+                                border: 1px solid var(--glass-border);
+                                border-radius: var(--radius-md);
+                                padding: 1rem;
+                                text-decoration: none;
+                                text-align: center;
+                                transition: var(--transition);
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            " onmouseover="this.style.background='rgba(6, 182, 212, 0.2)'" onmouseout="this.style.background='rgba(6, 182, 212, 0.1)'">
+                                <div style="font-size: 1.5rem;">🐙</div>
+                                <span style="color: var(--accent-cyan); font-weight: 600;">GitHub</span>
+                            </a>
+
+                            <a href="https://linkedin.com/in/akshaya-s-4925342a3" target="_blank" style="
+                                background: rgba(124, 58, 237, 0.1);
+                                border: 1px solid var(--glass-border);
+                                border-radius: var(--radius-md);
+                                padding: 1rem;
+                                text-decoration: none;
+                                text-align: center;
+                                transition: var(--transition);
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            " onmouseover="this.style.background='rgba(124, 58, 237, 0.2)'" onmouseout="this.style.background='rgba(124, 58, 237, 0.1)'">
+                                <div style="font-size: 1.5rem;">💼</div>
+                                <span style="color: var(--accent-purple); font-weight: 600;">LinkedIn</span>
+                            </a>
+
+                            <a href="https://twitter.com" target="_blank" style="
+                                background: rgba(236, 72, 153, 0.1);
+                                border: 1px solid var(--glass-border);
+                                border-radius: var(--radius-md);
+                                padding: 1rem;
+                                text-decoration: none;
+                                text-align: center;
+                                transition: var(--transition);
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            " onmouseover="this.style.background='rgba(236, 72, 153, 0.2)'" onmouseout="this.style.background='rgba(236, 72, 153, 0.1)'">
+                                <div style="font-size: 1.5rem;">🐦</div>
+                                <span style="color: var(--accent-pink); font-weight: 600;">Twitter</span>
+                            </a>
+
+                            <a href="https://codepen.io" target="_blank" style="
+                                background: rgba(6, 182, 212, 0.1);
+                                border: 1px solid var(--glass-border);
+                                border-radius: var(--radius-md);
+                                padding: 1rem;
+                                text-decoration: none;
+                                text-align: center;
+                                transition: var(--transition);
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            " onmouseover="this.style.background='rgba(6, 182, 212, 0.2)'" onmouseout="this.style.background='rgba(6, 182, 212, 0.1)'">
+                                <div style="font-size: 1.5rem;">✏️</div>
+                                <span style="color: var(--accent-cyan); font-weight: 600;">CodePen</span>
+                            </a>
+
+                            <a href="https://instagram.com" target="_blank" style="
+                                background: rgba(124, 58, 237, 0.1);
+                                border: 1px solid var(--glass-border);
+                                border-radius: var(--radius-md);
+                                padding: 1rem;
+                                text-decoration: none;
+                                text-align: center;
+                                transition: var(--transition);
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            " onmouseover="this.style.background='rgba(124, 58, 237, 0.2)'" onmouseout="this.style.background='rgba(124, 58, 237, 0.1)'">
+                                <div style="font-size: 1.5rem;">📷</div>
+                                <span style="color: var(--accent-purple); font-weight: 600;">Instagram</span>
+                            </a>
+
+                            <a href="https://hackerrank.com" target="_blank" style="
+                                background: rgba(236, 72, 153, 0.1);
+                                border: 1px solid var(--glass-border);
+                                border-radius: var(--radius-md);
+                                padding: 1rem;
+                                text-decoration: none;
+                                text-align: center;
+                                transition: var(--transition);
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 0.5rem;
+                            " onmouseover="this.style.background='rgba(236, 72, 153, 0.2)'" onmouseout="this.style.background='rgba(236, 72, 153, 0.1)'">
+                                <div style="font-size: 1.5rem;">🎯</div>
+                                <span style="color: var(--accent-pink); font-weight: 600;">HackerRank</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Availability -->
+                    <div class="glass-card" style="
+                        border-left: 4px solid var(--accent-pink);
+                        text-align: center;
+                    ">
+                        <h3 style="
+                            color: var(--accent-pink);
+                            margin-bottom: 1rem;
+                        ">AVAILABILITY</h3>
+                        <div style="
+                            background: rgba(236, 72, 153, 0.2);
+                            border: 1px solid rgba(236, 72, 153, 0.5);
+                            border-radius: var(--radius-md);
+                            padding: 1rem;
+                            margin-bottom: 1rem;
+                        ">
+                            <p style="
+                                color: var(--accent-pink);
+                                font-weight: 700;
+                                margin: 0;
+                                font-size: 1.1rem;
+                            ">
+                                🟢 Available for Internships
+                            </p>
+                        </div>
+                        <p style="
+                            color: var(--text-muted);
+                            font-size: 0.9rem;
+                            margin: 0;
+                        ">
+                            Actively seeking internship opportunities in web development, full-stack development, and software engineering roles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div style="margin-top: 4rem; margin-bottom: 4rem;">
+                <h2 class="section-title">RESPONSE STATISTICS</h2>
+
+                <div class="grid grid-4" style="margin-top: 2rem;">
+                    <div class="glass-card scroll-reveal" style="text-align: center;">
+                        <div style="
+                            font-size: 2.5rem;
+                            color: var(--accent-cyan);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">24h</div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Avg Response Time</p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="text-align: center;">
+                        <div style="
+                            font-size: 2.5rem;
+                            color: var(--accent-purple);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">100%</div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Reply Rate</p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="text-align: center;">
+                        <div style="
+                            font-size: 2.5rem;
+                            color: var(--accent-pink);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">Mon-Fri</div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Business Hours</p>
+                    </div>
+
+                    <div class="glass-card scroll-reveal" style="text-align: center;">
+                        <div style="
+                            font-size: 2.5rem;
+                            color: var(--accent-cyan);
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        ">24/7</div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Form Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+                © 2026 Mission Control Portfolio. Designed for the Future.
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                © 2026 Mission Control Portfolio. Designed for the Future.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                📧 Email: <a href="mailto:akshaya1508shan@gmail.com" style="color: var(--accent-cyan); text-decoration: none;">akshaya1508shan@gmail.com</a>
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/akshaya1290" target="_blank" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/akshaya-s-4925342a3" target="_blank" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" title="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2s9 5 20 0a9.5 9.5 0 0 0-9-5.5"></path>
+                    </svg>
+                </a>
+                <a href="mailto:akshaya1508shan@gmail.com" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-10 5L2 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
